@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'stripe/webhook',
         ]);
+        $middleware->alias([
+            'subscribed' => \App\Http\Middleware\Subscribed::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
