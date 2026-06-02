@@ -18,6 +18,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'subscribed' => \App\Http\Middleware\Subscribed::class,
         ]);
     })
+    ->withMiddleware(function (Middleware $middleware) {
+    $middleware->alias([
+        'subscribed' => \App\Http\Middleware\CheckSubscribed::class,
+    ]);
+})
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
